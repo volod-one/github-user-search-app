@@ -13,32 +13,21 @@ const Header = ({ setTheme, mounted, theme, systemTheme }: Props) => {
     if (!mounted) return null
 
     const currentTheme = theme === 'system' ? systemTheme : theme
+    const isDark = currentTheme === 'dark'
 
-    if (currentTheme === 'dark') {
-      return (
-        <button
-          className="flex items-center gap-4 font-bold transition-colors cursor-pointer dark:text-white dark:hover:text-clr-header-dark-active text-clr-primary group hover:text-clr-body"
-          onClick={() => {
-            setTheme('light')
-          }}
-        >
-          <span className=" text-sm tracking-[.2em] uppercase">light</span>
-          <FontAwesomeIcon icon={faSun} size="lg" />
-        </button>
-      )
-    } else {
-      return (
-        <button
-          className="flex items-center gap-4 font-bold transition-colors cursor-pointer dark:text-white dark:hover:text-clr-header-dark-active text-clr-primary group hover:text-clr-body"
-          onClick={() => {
-            setTheme('dark')
-          }}
-        >
-          <span className=" text-sm tracking-[.2em] uppercase">dark</span>
-          <FontAwesomeIcon icon={faMoon} size="lg" />
-        </button>
-      )
-    }
+    return (
+      <button
+        className="flex items-center gap-4 font-bold transition-colors cursor-pointer dark:text-white dark:hover:text-clr-header-dark-active text-clr-primary group hover:text-clr-body"
+        onClick={() => {
+          isDark ? setTheme('light') : setTheme('dark')
+        }}
+      >
+        <span className=" text-sm tracking-[.2em] uppercase">
+          {isDark ? 'light' : 'dark'}
+        </span>
+        <FontAwesomeIcon icon={isDark ? faSun : faMoon} size="lg" />
+      </button>
+    )
   }
 
   return (
