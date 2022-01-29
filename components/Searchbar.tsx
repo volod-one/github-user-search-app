@@ -24,7 +24,16 @@ const Searchbar = ({}: /*error = false*/ Props) => {
   }, [error])
 
   return (
-    <div className="flex items-center w-full gap-2 p-2 sm:p-2.5 overflow-hidden shadow-xl bg-clr-content-light dark:bg-clr-content-dark rounded-2xl">
+    <form
+      /* refactor later */
+      onSubmit={(e) => {
+        e.preventDefault()
+        setError(true)
+      }}
+      /* refactor later */
+
+      className="flex items-center w-full gap-2 p-2 sm:p-2.5 overflow-hidden shadow-xl bg-clr-content-light dark:bg-clr-content-dark rounded-2xl"
+    >
       {/* search field */}
       <div className="relative flex items-center flex-grow gap-2 p-2">
         <FontAwesomeIcon
@@ -50,17 +59,12 @@ const Searchbar = ({}: /*error = false*/ Props) => {
       {/* button */}
       <button
         className="px-4 sm:px-6 py-3 text-sm font-bold text-white transition-colors rounded-[0.625rem] bg-clr-accent hover:bg-clr-accent-active"
-        type="button"
-        /* refactor later */
-        onClick={() => {
-          setError(true)
-        }}
-        /* refactor later */
+        type="submit"
       >
         Search
       </button>
       {/* button */}
-    </div>
+    </form>
   )
 }
 
