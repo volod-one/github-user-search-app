@@ -3,6 +3,7 @@ import { useTheme } from 'next-themes'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import Header from '../components/Header'
+import Searchbar from '../components/Searchbar'
 
 const Home: NextPage = () => {
   const { systemTheme, theme, setTheme } = useTheme()
@@ -20,14 +21,17 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="flex flex-col justify-center h-screen px-6 font-space bg-clr-section-light dark:bg-clr-section-dark">
+        <div className="flex flex-col justify-center h-screen px-6 font-space bg-clr-section-light dark:bg-clr-section-dark gap-9">
           <Header
             setTheme={setTheme}
             mounted={mounted}
             theme={theme}
             systemTheme={systemTheme}
           />
-          <div>content</div>
+          <div className="flex flex-col gap-4">
+            <Searchbar />
+            <div>content</div>
+          </div>
         </div>
       </main>
     </div>
