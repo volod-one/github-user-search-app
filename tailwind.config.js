@@ -18,6 +18,7 @@ module.exports = {
         'clr-secondary': 'hsl(217,20%,51%)',
         'clr-heading': 'hsl(217,21%,21%)',
         'clr-body': 'hsl(220,18%,16%)',
+        'clr-header-dark-active': 'hsl(222,44%,70%)',
       },
       fontFamily: {
         space: ['Space Mono', 'monospace'],
