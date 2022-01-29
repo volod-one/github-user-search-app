@@ -16,27 +16,27 @@ const Header = ({ setTheme, mounted, theme, systemTheme }: Props) => {
 
     if (currentTheme === 'dark') {
       return (
-        <div
+        <button
           className="flex items-center gap-4 font-bold transition-colors cursor-pointer dark:text-white dark:hover:text-clr-header-dark-active text-clr-primary group hover:text-clr-body"
           onClick={() => {
             setTheme('light')
           }}
         >
-          <p className=" text-sm tracking-[.2em] uppercase">light</p>
+          <span className=" text-sm tracking-[.2em] uppercase">light</span>
           <FontAwesomeIcon icon={faSun} size="lg" />
-        </div>
+        </button>
       )
     } else {
       return (
-        <div
+        <button
           className="flex items-center gap-4 font-bold transition-colors cursor-pointer dark:text-white dark:hover:text-clr-header-dark-active text-clr-primary group hover:text-clr-body"
           onClick={() => {
             setTheme('dark')
           }}
         >
-          <p className=" text-sm tracking-[.2em] uppercase">dark</p>
+          <span className=" text-sm tracking-[.2em] uppercase">dark</span>
           <FontAwesomeIcon icon={faMoon} size="lg" />
-        </div>
+        </button>
       )
     }
   }
