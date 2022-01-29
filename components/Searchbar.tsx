@@ -35,7 +35,7 @@ const Searchbar = ({}: /*error = false*/ Props) => {
         <div className="flex-grow overflow-hidden">
           <label>
             <input
-              className="w-full text-sm sm:text-lg placeholder:text-clr-primary dark:placeholder:text-white focus:outline-none caret-clr-accent dark:bg-clr-content-dark"
+              className="w-full text-sm bg-transparent sm:text-lg placeholder:text-clr-primary dark:placeholder:text-white focus:outline-none caret-clr-accent dark:bg-clr-content-dark"
               type="text"
               name="search"
               placeholder="Search GitHub username…"
