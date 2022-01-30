@@ -23,3 +23,7 @@ Also I was trying to use specific icon, but somehow this icon didn't want to wor
 
 If user was not found my error text should appear and then after 4 seconds disappear.
 For now this state is local.
+
+### 6. Making User content.
+
+Make elements for User is not difficult, everything is separated in different files.. The only thing which made me a bit struggle is content's layout for different screens. I was trying use float on image, but seems like it is impossible to use it if sibling inside grid or flex container. So I decided to use grid for whole content inside my card. Little bit magic with adjustments and everything was done. With almost no pain.

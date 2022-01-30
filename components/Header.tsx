@@ -31,7 +31,7 @@ const Header = ({ setTheme, mounted, theme, systemTheme }: Props) => {
   }
 
   return (
-    <header className="flex items-center justify-between">
+    <header className="flex flex-col items-center justify-between w-full gap-4 xs:flex-row">
       {/* title / logo */}
       <h1 className="text-clr-body dark:text-white text-[1.625rem] font-bold">
         <a href="./">devfinder</a>

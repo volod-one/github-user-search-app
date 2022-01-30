@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -5,6 +7,10 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
+    screens: {
+      xs: '20rem',
+      ...defaultTheme.screens,
+    },
     extend: {
       colors: {
         'clr-section-light': 'hsl(226,100%,98%)',
