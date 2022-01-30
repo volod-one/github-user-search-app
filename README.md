@@ -27,3 +27,8 @@ For now this state is local.
 ### 6. Making User content.
 
 Make elements for User is not difficult, everything is separated in different files.. The only thing which made me a bit struggle is content's layout for different screens. I was trying use float on image, but seems like it is impossible to use it if sibling inside grid or flex container. So I decided to use grid for whole content inside my card. Little bit magic with adjustments and everything was done. With almost no pain.
+
+### 7. Tailwind breakpoints.
+
+If add extra breakpoint for tailwind other breakpoints won't work correctly, even if I will try to add them through extends.
+The easiest way is just import default breakpoints from tailwind defaultTheme and extract them to new breakpoints rules with my new one.
