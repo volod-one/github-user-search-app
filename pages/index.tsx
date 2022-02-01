@@ -2,6 +2,8 @@ import type { NextPage } from 'next'
 import { useTheme } from 'next-themes'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
+import { useDispatch, useSelector, useStore } from 'react-redux'
+import { fetchUser } from '../actions/user'
 import Header from '../components/Header'
 import Searchbar from '../components/Searchbar'
 import User from '../components/user/User'
@@ -9,10 +11,20 @@ import User from '../components/user/User'
 const Home: NextPage = () => {
   const { systemTheme, theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const dispatch = useDispatch()
+  const user = useSelector((state) => state.user)
 
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  useEffect(() => {
+    // dispatch(fetchUser('devildoctor27'))
+  }, [])
+
+  const searchButtonHandler = (value) => {
+    dispatch(fetchUser(value))
+  }
 
   return (
     <div>
@@ -22,8 +34,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="grid min-h-screen px-6 py-4 md:justify-center font-space bg-clr-section-light dark:bg-clr-section-dark">
-          <div className="max-w-[45.625rem] flex flex-col justify-center gap-9">
+        <div className="grid min-h-screen px-6 py-4 font-space bg-clr-section-light dark:bg-clr-section-dark">
+          <div className="max-w-[45.625rem] flex flex-col justify-center gap-9 md:m-auto w-full">
             <Header
               setTheme={setTheme}
               mounted={mounted}
@@ -32,9 +44,9 @@ const Home: NextPage = () => {
             />
 
             <div className="flex flex-col gap-4">
-              <Searchbar />
+              <Searchbar action={searchButtonHandler} />
 
-              <User user={undefined} />
+              {user.login && <User user={user} />}
             </div>
           </div>
         </div>

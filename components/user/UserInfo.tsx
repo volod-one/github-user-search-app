@@ -18,7 +18,7 @@ const UserInfo = ({
       <a
         href="#"
         className={`grid grid-cols-7 gap-4 overflow-hidden text-clr-primary text-[0.812rem] sm:text-[0.937rem] dark:text-white ${
-          location === undefined && 'opacity-50'
+          !location && 'opacity-50'
         }`}
       >
         <div>
@@ -32,7 +32,7 @@ const UserInfo = ({
       <a
         href="#"
         className={`grid grid-cols-7 gap-4 overflow-hidden text-clr-primary text-[0.812rem] sm:text-[0.937rem] dark:text-white ${
-          twitter === undefined && 'opacity-50'
+          !twitter && 'opacity-50'
         }`}
       >
         <div>

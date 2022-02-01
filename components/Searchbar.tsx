@@ -2,9 +2,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
 type Props = {
   // error: boolean
+  action: Function
 }
 
-const Searchbar = ({}: /*error = false*/ Props) => {
+const Searchbar = ({ action }: /*error = false*/ Props) => {
+  const [value, setValue] = useState('')
   const [error, setError] = useState(false)
   const showError = () => {
     if (error) {
@@ -23,12 +25,16 @@ const Searchbar = ({}: /*error = false*/ Props) => {
     return () => clearTimeout(timer)
   }, [error])
 
+  const inputHandler = (e) => {
+    setValue(e.target.value)
+  }
+
   return (
     <form
       /* refactor later */
       onSubmit={(e) => {
         e.preventDefault()
-        setError(true)
+        action(value)
       }}
       /* refactor later */
 
@@ -45,9 +51,11 @@ const Searchbar = ({}: /*error = false*/ Props) => {
           <label>
             <input
               className="w-full text-xs bg-transparent sm:text-lg placeholder:text-clr-primary dark:placeholder:text-white focus:outline-none caret-clr-accent dark:bg-clr-content-dark"
+              value={value}
               type="text"
               name="search"
               placeholder="Search GitHub username…"
+              onChange={inputHandler}
             />
           </label>
         </div>
