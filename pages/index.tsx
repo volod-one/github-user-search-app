@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import { useTheme } from 'next-themes'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector, useStore } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { fetchUser } from '../actions/user'
 import Header from '../components/Header'
 import Searchbar from '../components/Searchbar'
@@ -12,17 +12,14 @@ const Home: NextPage = () => {
   const { systemTheme, theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const dispatch = useDispatch()
-  const user = useSelector((state) => state.user)
+  const user = useSelector((state: any) => state.user)
+  const isSearchError = useSelector((state: any) => state.app.isSearchError)
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  useEffect(() => {
-    // dispatch(fetchUser('devildoctor27'))
-  }, [])
-
-  const searchButtonHandler = (value) => {
+  const searchButtonHandler = (value: string) => {
     dispatch(fetchUser(value))
   }
 
@@ -44,7 +41,7 @@ const Home: NextPage = () => {
             />
 
             <div className="flex flex-col gap-4">
-              <Searchbar action={searchButtonHandler} />
+              <Searchbar action={searchButtonHandler} error={isSearchError} />
 
               {user.login && <User user={user} />}
             </div>

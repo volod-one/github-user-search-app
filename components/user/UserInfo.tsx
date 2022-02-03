@@ -1,22 +1,22 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 type Props = {
-  location: string | undefined
-  twitter: string | undefined
-  site: string | undefined
-  organization: string | undefined
+  location: string | null
+  twitter: string | null
+  site: string
+  organization: string | null
 }
 
 const UserInfo = ({
-  location = undefined,
-  twitter = undefined,
-  site = undefined,
-  organization = undefined,
+  location = null,
+  twitter = null,
+  site,
+  organization = null,
 }: Props) => {
   return (
     <div className="grid items-center gap-4 sm:grid-cols-2">
-      <a
-        href="#"
+      {/* location */}
+      <p
         className={`grid grid-cols-7 gap-4 overflow-hidden text-clr-primary text-[0.812rem] sm:text-[0.937rem] dark:text-white ${
           !location && 'opacity-50'
         }`}
@@ -27,41 +27,55 @@ const UserInfo = ({
         <span className="col-start-2 col-span-full">
           {location ? location : 'Not Available'}
         </span>
-      </a>
+      </p>
+      {/* location */}
 
+      {/* twitter */}
       <a
-        href="#"
+        href={twitter ? 'https://twitter.com/' + twitter : '#'}
         className={`grid grid-cols-7 gap-4 overflow-hidden text-clr-primary text-[0.812rem] sm:text-[0.937rem] dark:text-white ${
           !twitter && 'opacity-50'
         }`}
+        target="_blank"
+        rel="noreferrer"
       >
         <div>
           <FontAwesomeIcon icon={['fab', 'twitter']} size="lg" />
         </div>
         <span className="col-start-2 col-span-full">
-          {twitter ? twitter : 'Not Available'}
+          @{twitter ? twitter : 'Not Available'}
         </span>
       </a>
+      {/* twitter */}
 
+      {/* site */}
       <a
-        href="#"
+        href={site.length > 0 ? site : '#'}
         className={`grid grid-cols-7 gap-4 overflow-hidden text-clr-primary text-[0.812rem] sm:text-[0.937rem] dark:text-white ${
-          site === undefined && 'opacity-50'
+          site.length === 0 && 'opacity-50'
         }`}
+        target="_blank"
+        rel="noreferrer"
       >
         <div>
           <FontAwesomeIcon icon={['fas', 'link']} size="lg" />
         </div>
         <span className="col-start-2 col-span-full">
-          {site ? site : 'Not Available'}
+          {site.length > 0 ? site : 'Not Available'}
         </span>
       </a>
+      {/* site */}
 
+      {/* organization */}
       <a
-        href="#"
+        href={
+          organization ? 'https://github.com/' + organization.slice(1) : '#'
+        }
         className={`grid grid-cols-7 gap-4 overflow-hidden text-clr-primary text-[0.812rem] sm:text-[0.937rem] dark:text-white ${
-          organization === undefined && 'opacity-50'
+          !organization && 'opacity-50'
         }`}
+        target="_blank"
+        rel="noreferrer"
       >
         <div>
           <FontAwesomeIcon icon={['fas', 'building']} size="lg" />
@@ -70,6 +84,7 @@ const UserInfo = ({
           {organization ? organization : 'Not Available'}
         </span>
       </a>
+      {/* organization */}
     </div>
   )
 }

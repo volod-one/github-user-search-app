@@ -1,13 +1,19 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { clearSearchError } from '../state/reducers/app'
 type Props = {
-  // error: boolean
+  error: boolean
   action: Function
 }
 
-const Searchbar = ({ action }: /*error = false*/ Props) => {
+// Need to fix clear error reducer
+
+const Searchbar = ({ action, error }: Props) => {
   const [value, setValue] = useState('')
-  const [error, setError] = useState(false)
+  console.log(error)
+  const dispatch = useDispatch()
+
   const showError = () => {
     if (error) {
       return (
@@ -19,13 +25,17 @@ const Searchbar = ({ action }: /*error = false*/ Props) => {
   }
 
   useEffect(() => {
+    showError()
+  }, [error])
+
+  useEffect(() => {
     const timer = setTimeout(() => {
-      setError(false)
+      dispatch(clearSearchError())
     }, 4000)
     return () => clearTimeout(timer)
   }, [error])
 
-  const inputHandler = (e) => {
+  const inputHandler = (e: any) => {
     setValue(e.target.value)
   }
 

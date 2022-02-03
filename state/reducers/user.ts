@@ -1,6 +1,8 @@
 const SET_USER = 'SET_USER'
 
-const initialState = {}
+const initialState = {
+  user: {},
+}
 
 const userReducer = (state = initialState, action: any) => {
   switch (action.type) {
