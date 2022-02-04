@@ -21,7 +21,6 @@ const UserHeader = ({ name, link, linkTitle, date }: Props) => {
     'Nov',
     'Dec',
   ]
-  console.log(userDate)
 
   return (
     <div className="flex flex-col gap-2 lg:flex-row md:justify-between">
