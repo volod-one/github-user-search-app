@@ -7,11 +7,8 @@ type Props = {
   action: Function
 }
 
-// Need to fix clear error reducer
-
 const Searchbar = ({ action, error }: Props) => {
   const [value, setValue] = useState('')
-  console.log(error)
   const dispatch = useDispatch()
 
   const showError = () => {
@@ -25,15 +22,11 @@ const Searchbar = ({ action, error }: Props) => {
   }
 
   useEffect(() => {
-    showError()
-  }, [error])
-
-  useEffect(() => {
     const timer = setTimeout(() => {
       dispatch(clearSearchError())
     }, 4000)
     return () => clearTimeout(timer)
-  }, [error])
+  }, [error, dispatch])
 
   const inputHandler = (e: any) => {
     setValue(e.target.value)
@@ -41,13 +34,10 @@ const Searchbar = ({ action, error }: Props) => {
 
   return (
     <form
-      /* refactor later */
       onSubmit={(e) => {
         e.preventDefault()
         action(value)
       }}
-      /* refactor later */
-
       className="flex items-center w-full gap-2 p-2 sm:p-2.5 overflow-hidden shadow-xl bg-clr-content-light dark:bg-clr-content-dark rounded-2xl"
     >
       {/* search field */}

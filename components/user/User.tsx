@@ -5,24 +5,34 @@ import UserInfo from './UserInfo'
 import UserStats from './UserStats'
 
 type Props = {
-  user: object | undefined
+  login: string
+  avatar_url: string
+  bio: string
+  company: string
+  html_url: string
+  created_at: string
+  twitter_username: string
+  location: string
+  blog: string
+  public_repos: number
+  followers: number
+  following: number
 }
 
-const User = ({ user = undefined }: Props) => {
-  const {
-    login,
-    avatar_url,
-    bio,
-    company,
-    html_url,
-    created_at,
-    public_repos,
-    followers,
-    following,
-    location,
-    twitter_username,
-    blog,
-  } = user
+const User = ({
+  login,
+  avatar_url,
+  bio,
+  company,
+  html_url,
+  created_at,
+  public_repos,
+  followers,
+  following,
+  location,
+  twitter_username,
+  blog,
+}: Props) => {
   return (
     <div className="px-6 pt-8 pb-12 shadow-xl sm:p-10 md:p-12 bg-clr-content-light dark:bg-clr-content-dark rounded-2xl">
       <div className="grid gap-4 sm:gap-y-8 lg:gap-y-5 md:grid-cols-4 sm:gap-0 xs:grid-cols-3">

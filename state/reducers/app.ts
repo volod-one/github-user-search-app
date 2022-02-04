@@ -12,7 +12,7 @@ const appReducer = (state = initialState, action: any) => {
         ...state,
         isSearchError: true,
       }
-    case SET_ERROR:
+    case CLEAR_ERROR:
       return {
         ...state,
         isSearchError: false,

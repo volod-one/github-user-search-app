@@ -16,34 +16,38 @@ const UserInfo = ({
   return (
     <div className="grid items-center gap-4 sm:grid-cols-2">
       {/* location */}
-      <p
+      <div
         className={`grid grid-cols-7 gap-4 overflow-hidden text-clr-primary text-[0.812rem] sm:text-[0.937rem] dark:text-white ${
-          !location && 'opacity-50'
+          !location ? 'opacity-50 cursor-default' : ''
         }`}
       >
-        <div>
+        <span>
           <FontAwesomeIcon icon={['fas', 'location-dot']} size="lg" />
-        </div>
+        </span>
         <span className="col-start-2 col-span-full">
           {location ? location : 'Not Available'}
         </span>
-      </p>
+      </div>
       {/* location */}
 
       {/* twitter */}
       <a
         href={twitter ? 'https://twitter.com/' + twitter : '#'}
-        className={`grid grid-cols-7 gap-4 overflow-hidden text-clr-primary text-[0.812rem] sm:text-[0.937rem] dark:text-white ${
-          !twitter && 'opacity-50'
+        className={`grid grid-cols-7 gap-4 overflow-hidden text-clr-primary text-[0.812rem] sm:text-[0.937rem] dark:text-white   sm:order-3 order-3  ${
+          !twitter ? 'opacity-50 cursor-default' : ' hover:underline'
         }`}
+        onClick={(e) => {
+          !twitter && e.preventDefault()
+        }}
+        title={twitter ? `https://twitter.com/${twitter}` : 'empty'}
         target="_blank"
         rel="noreferrer"
       >
-        <div>
+        <span>
           <FontAwesomeIcon icon={['fab', 'twitter']} size="lg" />
-        </div>
+        </span>
         <span className="col-start-2 col-span-full">
-          @{twitter ? twitter : 'Not Available'}
+          {twitter ? '@' + twitter : 'Not Available'}
         </span>
       </a>
       {/* twitter */}
@@ -51,15 +55,19 @@ const UserInfo = ({
       {/* site */}
       <a
         href={site.length > 0 ? site : '#'}
-        className={`grid grid-cols-7 gap-4 overflow-hidden text-clr-primary text-[0.812rem] sm:text-[0.937rem] dark:text-white ${
-          site.length === 0 && 'opacity-50'
+        className={`grid grid-cols-7 gap-4 overflow-hidden text-clr-primary text-[0.812rem] sm:text-[0.937rem] dark:text-white    sm:order-3 order-2  ${
+          site.length === 0 ? 'opacity-50 cursor-default' : ' hover:underline'
         }`}
+        onClick={(e) => {
+          site.length <= 0 && e.preventDefault()
+        }}
+        title={site.length > 0 ? site : 'empty'}
         target="_blank"
         rel="noreferrer"
       >
-        <div>
+        <span>
           <FontAwesomeIcon icon={['fas', 'link']} size="lg" />
-        </div>
+        </span>
         <span className="col-start-2 col-span-full">
           {site.length > 0 ? site : 'Not Available'}
         </span>
@@ -71,15 +79,19 @@ const UserInfo = ({
         href={
           organization ? 'https://github.com/' + organization.slice(1) : '#'
         }
-        className={`grid grid-cols-7 gap-4 overflow-hidden text-clr-primary text-[0.812rem] sm:text-[0.937rem] dark:text-white ${
-          !organization && 'opacity-50'
+        className={`grid grid-cols-7 gap-4 overflow-hidden text-clr-primary text-[0.812rem] sm:text-[0.937rem] dark:text-white order-4 ${
+          !organization ? 'opacity-50 cursor-default' : ' hover:underline'
         }`}
+        onClick={(e) => {
+          !organization && e.preventDefault()
+        }}
+        title={organization ? organization : 'empty'}
         target="_blank"
         rel="noreferrer"
       >
-        <div>
+        <span>
           <FontAwesomeIcon icon={['fas', 'building']} size="lg" />
-        </div>
+        </span>
         <span className="col-start-2 col-span-full">
           {organization ? organization : 'Not Available'}
         </span>

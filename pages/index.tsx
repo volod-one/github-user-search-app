@@ -43,7 +43,7 @@ const Home: NextPage = () => {
             <div className="flex flex-col gap-4">
               <Searchbar action={searchButtonHandler} error={isSearchError} />
 
-              {user.login && <User user={user} />}
+              {user.login && <User {...user} />}
             </div>
           </div>
         </div>

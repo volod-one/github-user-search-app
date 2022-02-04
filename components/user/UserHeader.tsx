@@ -6,6 +6,23 @@ type Props = {
 }
 
 const UserHeader = ({ name, link, linkTitle, date }: Props) => {
+  const userDate = new Date(date)
+  const month = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ]
+  console.log(userDate)
+
   return (
     <div className="flex flex-col gap-2 lg:flex-row md:justify-between">
       <div>
@@ -23,7 +40,13 @@ const UserHeader = ({ name, link, linkTitle, date }: Props) => {
       </div>
       <div>
         <span className="text-clr-secondary dark:text-clr-content-light text-[0.812rem] sm:text-[0.937rem]">
-          Joined 25 Jan 2011
+          {'Joined' +
+            ' ' +
+            userDate.getDate() +
+            ' ' +
+            month[userDate.getMonth()] +
+            ' ' +
+            userDate.getFullYear()}
         </span>
       </div>
     </div>
