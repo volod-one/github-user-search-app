@@ -75,19 +75,11 @@ const UserInfo = ({
       {/* site */}
 
       {/* organization */}
-      <a
-        href={
-          organization ? 'https://github.com/' + organization.slice(1) : '#'
-        }
+      <div
         className={`grid grid-cols-7 gap-4 overflow-hidden text-clr-primary text-[0.812rem] sm:text-[0.937rem] dark:text-white order-4 ${
-          !organization ? 'opacity-50 cursor-default' : ' hover:underline'
+          !organization ? 'opacity-50' : ''
         }`}
-        onClick={(e) => {
-          !organization && e.preventDefault()
-        }}
         title={organization ? organization : 'empty'}
-        target="_blank"
-        rel="noreferrer"
       >
         <span>
           <FontAwesomeIcon icon={['fas', 'building']} size="lg" />
@@ -95,7 +87,7 @@ const UserInfo = ({
         <span className="col-start-2 col-span-full">
           {organization ? organization : 'Not Available'}
         </span>
-      </a>
+      </div>
       {/* organization */}
     </div>
   )
